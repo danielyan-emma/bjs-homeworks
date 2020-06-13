@@ -5,17 +5,16 @@ function getResult(a,b,c){
     a = 2;
     b = 4;
     c = -3;
-    let x = [];
     let descr = b ** 2 - 4 * a * c;
     if (descr > 0) {
         let x1 = (-b + Math.sqrt(descr))/(2 * a);
         let x2 = (-b - Math.sqrt(descr))/(2 * a);
-        return ('x1 = '+x1+'   x2 = '+x2);
+        return [descr, x1, x2];
     } if (descr < 0) {
-        alert('Решений нет, так как дискриминант меньше нуля.');
+        return ('Решений нет, так как дискриминант меньше нуля.');
     } if (descr == 0) {
         x1 = (-b)/(2 * a);
-        return ('x = '+x1);
+        return [descr, x1];
     };
 };
     // let result = [a, b, c];
