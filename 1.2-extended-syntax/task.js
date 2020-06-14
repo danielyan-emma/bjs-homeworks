@@ -2,24 +2,21 @@
 // 2x^2+4x-3=0
 function getResult(a,b,c){
     // код для задачи №1 писать здесь
-    a = 2;
-    b = 4;
-    c = -3;
+    // a = 2;
+    // b = 4;
+    // c = -3;
     let descr = b ** 2 - 4 * a * c;
+    let x1 = (-b + Math.sqrt(descr)) / (2 * a);
+    let x2 = (-b - Math.sqrt(descr)) / (2 * a);
     if (descr > 0) {
-        let x1 = (-b + Math.sqrt(descr))/(2 * a);
-        let x2 = (-b - Math.sqrt(descr))/(2 * a);
-        return [descr, x1, x2];
+        return [x1, x2];
     } if (descr < 0) {
         return ('Решений нет, так как дискриминант меньше нуля.');
     } if (descr == 0) {
-        x1 = (-b)/(2 * a);
-        return [descr, x1];
+        return [x1];
     };
 };
-    // let result = [a, b, c];
 
-    // return x;
 
 function getAverageMark(marks) {
     // код для задачи №2 писать здесь
