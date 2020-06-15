@@ -4,7 +4,8 @@ function getResult(a,b,c){
     // код для задачи №1 писать здесь
     let descr = b ** 2 - 4 * a * c;
     if (descr < 0) {
-        return('Решений нет, так как дискриминант меньше нуля.' + []);
+        console.log('Решений нет, так как дискриминант меньше нуля.');
+        return [];
     }
 
     let x1 = (-b + Math.sqrt(descr)) / (2 * a);
