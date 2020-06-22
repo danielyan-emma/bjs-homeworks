@@ -60,7 +60,7 @@ const inputData = {
 function getAverageScore(data) {
     let result = {};
     let sum = 0;
-    let i = 1;
+    let i = 0;
     for (let prop in data) {
         result[prop] = getAverageMark(data[prop]);
         sum += result[prop];
