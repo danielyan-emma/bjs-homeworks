@@ -20,11 +20,11 @@ class PrintEditionItem {
     }
 }
 
-const sherlock = new PrintEditionItem("Полное собрание повестей и рассказов о Шерлоке Холмсе в одном томе", 2019, 1008);
-console.log(sherlock.releaseDate);
-console.log(sherlock.state);
-sherlock.fix();
-console.log(sherlock.state);
+// const sherlock = new PrintEditionItem("Полное собрание повестей и рассказов о Шерлоке Холмсе в одном томе", 2019, 1008);
+// console.log(sherlock.releaseDate);
+// console.log(sherlock.state);
+// sherlock.fix();
+// console.log(sherlock.state);
 
 class Magazine extends PrintEditionItem {
     constructor(name, releaseDate, pagesCount) {
@@ -61,26 +61,26 @@ class DetectiveBook extends Book {
         this.type = 'detective';
     }
 }
-
-const picknick = new FantasticBook(
-    "Пикник на обочине",
-    1972,
-    168,
-    "Аркадий и Борис Стругацкие"
-);
-
-console.log(picknick.author); //"Аркадий и Борис Стругацкие"
-picknick.state = 10;
-console.log(picknick.state); //10
-picknick.fix();
-console.log(picknick.state); //15
+//
+// const picknick = new FantasticBook(
+//     "Пикник на обочине",
+//     1972,
+//     168,
+//     "Аркадий и Борис Стругацкие"
+// );
+//
+// console.log(picknick.author); //"Аркадий и Борис Стругацкие"
+// picknick.state = 10;
+// console.log(picknick.state); //10
+// picknick.fix();
+// console.log(picknick.state); //15
 
 
 
 console.log('Task 2');
 class Library {
     constructor(name, books) {
-        this.name = 'name';
+        this.name = name;
         this.books = [];
     }
 
@@ -104,6 +104,8 @@ class Library {
         for (let i=0; i<this.books.length; i++){
             if (this.books[i].name === bookName) {
                 book = this.books.splice(i, 1);
+                book = book[0];
+                console.log(book);
                 break;
             }
         }
@@ -112,10 +114,12 @@ class Library {
     }
 }
 
+
 const library = new Library(
     "Библиотека имени Ленина",
     []
 );
+console.log(library);
 
 library.addBook(new DetectiveBook("Полное собрание повестей и рассказов о Шерлоке Холмсе в одном томе", 2019, 1008, "Артур Конан Дойл"));
 library.addBook(new FantasticBook("Пикник на обочине", 1972, 168, "Аркадий и Борис Стругацкие"));
@@ -158,13 +162,13 @@ class StudentLog {
     }
 
     getAverageBySubject(subject) {
-        if (this.subject.length <= 0) {
+        if(!this.grades.hasOwnProperty(subject)) {
             return 0;
         }
         let sum = 0;
-        for (let i = 0; i < this.subject.length; i++) {
-            sum += this.subject[i];
-            const average = sum / this.subject.length;
+        for (let i = 0; i < this.grades[subject].length; i++) {
+            sum += this.grades[subject][i];
+            const average = sum / this.grades[subject].length;
             return average;
         }
     }
@@ -179,8 +183,6 @@ class StudentLog {
             }
         }
 
-        console.log(sum, count);
-
         return (count > 0) ? (sum / count) : 0;
     }
 }
@@ -188,22 +190,22 @@ class StudentLog {
 const log = new StudentLog('Олег Никифоров');
 
 
-console.log(log.addGrade(3, 'algebra'));
-// 1
-
-console.log(log.addGrade('отлично!', 'math'));
-// Вы пытались поставить оценку "отлично!" по предмету "math". Допускаются только числа от 1 до 5.
-// 0
-
-console.log(log.addGrade(4, 'algebra'));
-// 2
-
-console.log(log.addGrade(5, 'geometry'));
-// 1
-
-console.log(log.addGrade(25, 'geometry'));
-// Вы пытались поставить оценку "25" по предмету "geometry". Допускаются только числа от 1 до 5.
-// 0
+// console.log(log.addGrade(3, 'algebra'));
+// // 1
+//
+// console.log(log.addGrade('отлично!', 'math'));
+// // Вы пытались поставить оценку "отлично!" по предмету "math". Допускаются только числа от 1 до 5.
+// // 0
+//
+// console.log(log.addGrade(4, 'algebra'));
+// // 2
+//
+// console.log(log.addGrade(5, 'geometry'));
+// // 1
+//
+// console.log(log.addGrade(25, 'geometry'));
+// // Вы пытались поставить оценку "25" по предмету "geometry". Допускаются только числа от 1 до 5.
+// // 0
 
 
 log.addGrade(2, 'algebra');
@@ -212,3 +214,6 @@ log.addGrade(5, 'geometry');
 log.addGrade(4, 'geometry');
 
 console.log(log.getTotalAverage()); // 3,75
+console.log(log.getAverageBySubject('geometry')); // 4.5
+console.log(log.getAverageBySubject('algebra')); // 3
+console.log(log.getAverageBySubject('math')); // 0
