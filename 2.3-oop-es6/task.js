@@ -168,9 +168,9 @@ class StudentLog {
         let sum = 0;
         for (let i = 0; i < this.grades[subject].length; i++) {
             sum += this.grades[subject][i];
+        }
             const average = sum / this.grades[subject].length;
             return average;
-        }
     }
 
     getTotalAverage() {
